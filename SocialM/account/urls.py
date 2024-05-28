@@ -9,8 +9,8 @@ urlpatterns = [
 # path('login/', views.user_login, name='login'),
 
 # url-for registration, login and logouts
-# path('login/', auth_views.LoginView.as_view(), name='login'),
-# path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+path('login/', auth_views.LoginView.as_view(), name='login'),
+path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 # url-адреса смены пароля
 # path('password-change/',
@@ -40,4 +40,5 @@ urlpatterns = [
 path('', include('django.contrib.auth.urls')),
 path('', views.dashboard, name='dashboard'),
 path('register/', views.register, name='register'),
+path('edit/', views.edit, name='edit'),
 ]
