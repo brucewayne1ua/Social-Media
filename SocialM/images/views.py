@@ -12,6 +12,7 @@ from .models import Image
 from actions.utils import create_action
 import redis
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
 # connect to redis
@@ -120,3 +121,26 @@ def image_ranking(request):
                   'images/image/ranking.html',
                   {'section': 'images',
                    'most_viewed': most_viewed})
+
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, render
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+@login_required
+def user_list(request):
+    users = User.objects.filter(is_active=True)
+    return render(request, 'account/user/list.html', {
+        'section': 'people',
+        'users': users
+    })
+
+@login_required
+def user_detail(request, username):
+    user = get_object_or_404(User, username=username, is_active=True)
+    return render(request, 'account/user/detail.html', {
+        'section': 'people',
+        'user': user
+    })
