@@ -149,6 +149,8 @@ AUTHENTICATION_BACKENDS = [
 
 ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
+#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # ИД клиента Google
+#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Секрет клиента Google
 
 SOCIAL_AUTH_PIPELINE = [
  'social_core.pipeline.social_auth.social_details',
